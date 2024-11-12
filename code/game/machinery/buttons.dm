@@ -290,6 +290,10 @@
 	if((machine_stat & (NOPOWER|BROKEN)))
 		return FALSE
 
+	var/area/hell = get_area(user)
+	if(istype(hell, /area/station/science/robotics/lab)) //this kills the roboticist
+		explosion(user, devastation_range = 1, heavy_impact_range = 3, light_impact_range = 5, flame_range = 7)
+
 	if(device && device.next_activate > world.time)
 		return FALSE
 
